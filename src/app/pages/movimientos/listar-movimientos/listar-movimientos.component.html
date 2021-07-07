@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12 col-md-7">
+                <h4 class="card-title"><span class="lstick"></span>Quincenas</h4>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <input type="text" placeholder="Buscar..." class="form-control">
+            </div>
+        </div>
+        <div class="message-box contact-box">
+            <div class="message-widget contact-widget">
+                <br>
+                <!-- Message -->
+                <a *ngFor="let quincena of quincenas" [routerLink]="['movimiento', quincena.mes, quincena.quincena]">
+                    <div class="user-img"> 
+                        <span class="round fa fa-calendar"></span>
+                    </div>
+                    <div class="mail-contnet">
+                        <h5>{{quincena.quincena}} {{quincena.mes}}</h5> 
+                        <span class="mail-desc">Desde {{quincena.primerDia | date}} Hasta {{quincena.ultimoDia | date}}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

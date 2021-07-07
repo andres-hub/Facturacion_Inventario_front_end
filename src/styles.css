@@ -1,0 +1,45 @@
+.fast{
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+#themecolors .selector, .cursor{
+    cursor: pointer;
+}
+#google-btn {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center; 
+}
+
+.w100{
+    width: 100px;
+}
+.avatar{
+    width: 35px;
+    border-radius: 100%;
+}
+
+.oculto {
+    display: none;
+}
+
+.fondo-modal-imagen{
+    background-color: rgba(0, 0, 0, 0.4);
+    left: 0px;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 9999;  
+}
+
+.w500{
+    height: 50px;
+}
+.fondo:hover {
+    background: #e9edf2;
+    cursor: pointer;
+  }

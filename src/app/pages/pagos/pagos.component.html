@@ -1,0 +1,165 @@
+<app-loading></app-loading>
+
+<div class="row" *ngIf="!loadingService.cargando">
+
+    <!-- ============================================================== -->
+    <!-- Ingresos -->
+    <!-- ============================================================== -->
+    <div class="col-lg-6 col-xlg-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div>
+                        <h4 class="card-title"><span class="lstick"></span>Ingresos</h4>
+                        <h6 class="card-subtitle">
+                            Por favor seleccione los ingresos con los que va a realizar los pagos.
+                        </h6>
+                    </div>
+                    <div class="ml-auto">
+                        <button routerLink="../../ingresos/ingreso/Nuevo" 
+                        class="pull-right btn btn-sm btn-rounded btn-success"> 
+                         <i class="fa fa-plus"></i>
+                         ingreso
+                        </button>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- To do list widgets -->
+                <!-- ============================================================== -->
+                <div class="to-do-widget m-t-20">
+                    <form class="form-material m-t-40" autocomplete="off">
+                        <ul class="list-task todo-list list-group m-b-0" data-role="tasklist">
+                            
+                            <li *ngFor="let ingreso of ingresos" class="list-group-item" data-role="task">
+                                <div class="checkbox checkbox-info">
+                                    <input [checked]="ingreso.pago" (change)="cambioIngreso(ingreso, $event)" type="checkbox" id="{{ingreso.arquetipoId}}" name="{{ingreso.arquetipoId}}">
+                                    <label for="{{ingreso.arquetipoId}}" class=""> 
+                                        <span>{{ingreso.nombre}}</span>
+                                    </label>
+                                </div>
+                                <ul class="assignedto">
+
+                                    <li>
+                                        <input currencyMask [disabled]="ingreso.pago" [(ngModel)]="ingreso.valor" [ngModelOptions]="{standalone: true}" class="form-control form-control-line" required>  
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                            
+                            
+                        
+                        </ul>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Ingresos -->
+    <!-- ============================================================== -->
+
+
+
+    <!-- ============================================================== -->
+    <!-- Gastos -->
+    <!-- ============================================================== -->
+    <div class="col-lg-6 col-xlg-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div>
+                        <h4 class="card-title"><span class="lstick"></span>Gastos </h4>
+                        <h6 class="card-subtitle">Por favor seleccione los gastos.</h6></div>
+                    <div class="ml-auto">
+                        <button routerLink="../../gastos/gasto/Nuevo" 
+                        class="pull-right btn btn-sm btn-rounded btn-danger"> 
+                         <i class="fa fa-plus"></i>
+                         Gastos
+                        </button>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- To do list widgets -->
+                <!-- ============================================================== -->
+                <div class="to-do-widget m-t-20">
+                    <form class="form-material m-t-40" autocomplete="off">
+                        <ul class="list-task todo-list list-group m-b-0" data-role="tasklist">
+                            
+                            <li *ngFor="let gasto of gastos" class="list-group-item" data-role="task">
+                                <div class="checkbox checkbox-info">
+                                    
+                                    <input [checked]="gasto.pago" (change)="cambioGastos(gasto, $event)" type="checkbox" id="{{gasto.arquetipoId}}" name="{{gasto.arquetipoId}}">
+                                    <label for="{{gasto.arquetipoId}}" class=""> <span>{{gasto.nombre}}</span></label>
+                                </div>
+                                <ul class="assignedto">
+
+                                    <li>
+                                        <input currencyMask [disabled]="gasto.pago" [(ngModel)]="gasto.valor" [ngModelOptions]="{standalone: true}" class="form-control form-control-line" required>  
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                            
+                            
+                        
+                        </ul>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Gastos -->
+    <!-- ============================================================== -->
+
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="row">
+                <div class="col-12">
+                    <div class="social-widget">
+                        <div class="soc-content">
+                            <div class="col-12 b-r soc-header box bg-success">
+                                <h1 class="font-light text-white">{{totalIngresos | currency}}</h1>
+                                <h5 class="text-white">Total Ingreso</h5>
+                            </div>                            
+                        </div>
+                        <div class="soc-content">                            
+                            <div class="col-12">
+                                <i class="ti-exchange-vertical text-success"></i>
+                                <h3 class="font-medium">{{saldo | currency}}</h3>
+                                <h5 class="text-muted">Saldo</h5>
+                            </div>                                                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="row">
+                <div class="col-12">
+                    <div class="social-widget">
+                        <div class="soc-content">
+                            <div class="col-12 soc-header box bg-danger">
+                                <h1 class="font-light text-white">{{totalGastos | currency}}</h1>
+                                <h5 class="text-white">Total Gastos</h5>
+                            </div>
+                        </div>
+                        <div class="soc-content">    
+                            <div class="col-12 b-r">
+                                <i class="ti-arrow-down text-danger"></i>
+                                <h3 class="font-medium">{{totalPagos | currency}}</h3>
+                                <h5 class="text-muted">Total, pagos</h5>
+                            </div>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+</div>

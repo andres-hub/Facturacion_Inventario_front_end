@@ -1,0 +1,139 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="user-profile">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <img [src]="usuario.imagenUrl" alt="user" />
+                        <span class="hide-menu">
+                            {{usuario.nombre | slice:0:18}}{{(usuario.nombre.length > 18)? '...': ''}}
+                        </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a routerLinkActive="active" routerLink="./perfil">Mi perfil</a></li>
+                        <li><a routerLinkActive="active" routerLink="settings">Configurar tema</a></li>
+                        <li><a  (click)="logout()">Salir</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-devider"></li>
+
+                <li class="sidebar-item">                    
+                    <a [routerLink]="''" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                        <i class="fa fa-home"></i>
+                            <span class="hide-menu">
+                                Home
+                            </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">                    
+                    <a (click)="accion('En este módulo podrás gestionar a tus proveedores para tenerlos en una base de datos centralizada.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                        <i class="fa fa-address-book"></i>
+                            <span class="hide-menu">
+                                Proveedores 
+                            </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">                    
+                    <a (click)="accion('En este módulo podrás registras tus productos con las características de precio compra, precio venta, en stock y fecha de vencimiento.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                        <i class="fa fa-tags"></i>
+                            <span class="hide-menu">
+                                Productos 
+                            </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">                    
+                    <a (click)="accion('En este módulo podrás registras tus productos con las características de precio compra, precio venta, e stock y fecha de vencimiento, programar envió de alertar vía whatsapp de productos en stock agotado.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                        <i class="fa fa-clipboard"></i>
+                            <span class="hide-menu">
+                                Inventario
+                            </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">                    
+                    <a (click)="accion('En este módulo podrás realizar arqueos de tus ventas, compras y bajas de tus productos.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                        <i class="fa fa-money"></i>
+                            <span class="hide-menu">
+                                Arqueo
+                            </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">                    
+                    <a (click)="accion('En este módulo podrás ver en tiempo real estadísticas como productos más vendidos rotación de productos esto con el fin de tomar decisiones asertivas para el crecimiento de tu empresa.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                        <i class="fa fa-line-chart"></i>
+                            <span class="hide-menu" style="position: absolute !important;">
+                                Inteligencia de Negocio
+                            </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">                    
+                    <a (click)="accion('En este módulo podrás generar tus facturas de venta.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                        <i class="fa fa-handshake-o"></i>
+                            <span class="hide-menu">
+                                Facturación
+                            </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">                    
+                    <a (click)="'En este módulo podrás realizar el ingreso de compra de tus productos con los respectivos proveedores.'" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                        <i class="fa fa-shopping-cart"></i>
+                            <span class="hide-menu">
+                                Compras
+                            </span>
+                    </a>
+                </li>
+               
+                <li *ngFor="let item of sidebarService.menu" class="sidebar-item"> 
+                  
+                    <a *ngIf="item.submenu.length == 1" 
+                    aria-expanded="false"
+                    aria-disabled="true"
+                    class="waves-effect waves-dark"
+                    [routerLink]="item.submenu[0].url" 
+                    routerLinkActive="active" 
+                    [routerLinkActiveOptions]="{exact: true}" 
+                    >
+
+                        <i [class]="item.icono"></i>
+                            <span class="hide-menu">
+                                {{item.titulo}}
+                            </span>
+                    </a>
+                    
+ 
+                    <a *ngIf="item.submenu.length > 1" class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i [class]="item.icono"></i>
+                            <span class="hide-menu">
+                                {{item.titulo}} 
+                                <span class="label label-rouded label-themecolor pull-right">
+                                    {{item.submenu.length}}
+                                </span>
+                            </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li *ngFor="let subItem of item.submenu">
+                            <a [routerLink]="subItem.url" routerLinkActive="active" 
+                            [routerLinkActiveOptions]="{exact: true}">
+                                {{subItem.titulo}}
+                            </a>
+                        </li>                        
+                    </ul>
+
+
+
+                </li>
+   
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->

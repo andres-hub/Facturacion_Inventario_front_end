@@ -1,0 +1,31 @@
+<h4 class="card-title">Parametro</h4>
+<h6 class="card-subtitle">Actualizar información</h6>
+
+<app-loading></app-loading>
+
+<form *ngIf="!loadingService.cargando" class="form-horizontal form-material" id="loginform" ngNativeValidate autocomplete="off" [formGroup]="parametroFrom" (ngSubmit)="guardarParametro()">
+                    
+    <div class="form-group m-t-20">
+        <div class="col-xs-12">
+            <input class="form-control" required placeholder="Nombre" formControlName="nombre">
+        </div>
+    </div>
+    <div class="form-group m-t-20">
+        <div class="col-xs-12">
+            <input class="form-control" required placeholder="Valor" formControlName="valor">
+        </div>
+    </div>
+
+    <div class="form-group m-t-20">
+        <div class="col-xs-12">
+            <input class="form-control text-uppercase" placeholder="Estado"  formControlName="estado">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 btn-block">
+        <i class="fa fa-save"> 
+        Guardar
+        </i>
+    </button>
+
+</form>

@@ -1,0 +1,67 @@
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+<div class="row" *ngIf="!loadingService.cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Gastos</h4>
+                <h6 class="card-subtitle">Actualizar información</h6>
+                <form class="form-material m-t-40" ngNativeValidate autocomplete="off" [formGroup]="gastoForm" (ngSubmit)="guardar()">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input class="form-control form-control-line" required formControlName="nombre"> 
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select class="form-control" (change)="cambioTipo()" required formControlName="tipo">
+                            <option value="Básico">Básico</option>
+                            <option value="Ahorró">Ahorró</option>
+                            <option value="Servicios">Servicios</option>
+                            <option value="Crédito">Crédito</option>
+                            <option value="Otro">Otro</option>                                                       
+                        </select>
+                    </div>
+                    <div *ngIf="credito" class="form-group">
+                        <label>Numero de cuotas</label>
+                        <input type="number" min="1" class="form-control form-control-line" formControlName="numeroCuotas"> 
+                    </div>
+                    <div *ngIf="credito" class="form-group">
+                        <label>Efectivo anual</label>
+                        <input type="number" min="1" class="form-control form-control-line" formControlName="efectivoAnual"> 
+                    </div>                    
+                    <div class="form-group">
+                        <label>Frecuencia</label>
+                        <select (change)="cambioFrecuencia()" class="form-control" required formControlName="frecuencia">
+                            <option value="Quincenal">Quincenal</option>
+                            <option value="Mensual">Mensual</option>
+                            <option value="Unica">Unica vez</option>
+                        </select>
+                    </div>                    
+                    <div *ngIf="mensual" class="form-group">
+                        <label>Quincena</label>
+                        <select class="form-control" required formControlName="quincena">
+                            <option value="primera">Primera quincena</option>
+                            <option value="segunda">Segunda quincena</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Valor</label>
+                        <input currencyMask class="form-control form-control-line" required formControlName="valor"> 
+                    </div>
+
+                    <button type="submit" class="m-t-10 m-b-20 waves-effect waves-dark btn btn-success btn-md btn-rounded">
+                        <i class="fa  fa-save"></i>
+                        Guardar
+                    </button>
+                    
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End PAge Content -->
+<!-- ============================================================== -->
+<app-loading></app-loading>

@@ -1,0 +1,94 @@
+
+<div class="row">
+    
+    <div class="col-sm-12 col-md-5">
+
+        <h4 class="card-title">Total de usuarios ({{ totalUsuarios }})</h4>
+        <h6 class="card-subtitle">Usuarios registrados</h6>
+
+    </div>
+
+    <div class="col-sm-12 col-md-7">
+        <input type="text" class="form-control" placeholder="Buscar usuario.." (keyup)="buscar(txtTermino.value)" #txtTermino>
+    </div>
+
+</div>
+
+<div class="col">
+    <div class="text-right">
+        <a class="btn btn-primary"
+           routerLink="usuario/Nuevo">
+            <i class="fa fa-plus"></i> 
+            Nuevo
+        </a>
+    </div>
+</div>
+
+<app-loading></app-loading>
+
+<div *ngIf="!loadingService.cargando">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="w100">Avatar</th>
+                    <th>Correo</th>
+                    <th>Nombre</th>
+                    <th>Rol</th>
+                    <th class="w100">Estado</th>
+                    <th class="w100">Auth</th>
+                    <th class="text-nowrap w100">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuarios">
+                    <td class="text-center">
+                        <img [src]="usuario.imagenUrl" class="avatar" alt="Avatar de usuario">
+                    </td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>
+                        <select class="form-control" [(ngModel)]="usuario.role" (change)="cambiarRole( usuario )">                                       
+                            <option *ngFor="let rol of roles" [value]="rol._id">{{rol.nombre}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <div *ngIf="usuario.estado" class="label label-table label-success">Activo</div>
+                        <div *ngIf="!usuario.estado" class="label label-table label-danger">Inactivo</div>
+                    </td>
+                    <td>
+                        <span *ngIf="usuario.google" class="label label-danger">Google</span>
+                        <span *ngIf="!usuario.google" class="label label-info">Email</span>
+                    </td>
+                    <td class="text-nowrap text-center">                                
+                        <a data-original-title="Cambiar estado" (click)="cambiarEstadoUsuario(usuario)" data-toggle="tooltip" data-original-title="Cambiar estado" class="cursor"> 
+                            <i class="fa fa-power-off text-danger"></i> 
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="txtTermino.value.length < 2" class="row">
+        
+        <div class="col-sm-12 col-md-5">
+
+            <div class="dataTables_info text-aling-right" id="example_info" role="status" aria-live="polite">
+                Mostrando del {{ viewDesde }} al {{hasta}} de {{ totalUsuarios }} Registros
+            </div>
+
+        </div>
+        
+        <div class="col-sm-12 col-md-7 text-right">
+            <button  [disabled]="!Anterior" (click)="cambiarPagina(-10)" class="btn btn-secondary">
+                <i class="mdi mdi-chevron-left"></i> Anterior</button>
+            &nbsp;
+            <button [disabled]="!Sigiente" (click)="cambiarPagina(10)" class="btn btn-secondary">
+                Sigiente 
+                <i class="mdi mdi-chevron-right"></i>
+            </button>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<app-loading></app-loading>
+
+<!-- Row -->
+<div *ngIf="!loadingService.cargando" class="row">
+    <div class="col-lg-12">
+
+        <div class="card ">
+            <div class="card-header bg-info">
+                <h4 class="m-b-0 text-white">{{nombre}}</h4>
+            </div>           
+
+            <div class="card-body">
+                
+                <div class="form-body">
+                    <!-- Modulos -->
+                    <div *ngFor="let row of menu" >
+                        <h3 class="box-title">{{row.modulo.nombre}}</h3>
+                        <hr>
+
+                        <!-- Entidades -->
+                        <div *ngFor="let entidad of row.entidades" >
+                            <h4 class="card-subtitle">{{entidad.nombre}}</h4>
+                            <div class="row">
+
+                                <!-- Acciones -->
+                                <div *ngFor="let accion of entidad.acciones" class="col-md-4 text-center">
+                                    <input [checked]="accion.check" (change)="cambio(row.modulo._id, entidad._id, accion._id, $event)" type="checkbox" class="check" id="{{accion._id}}">
+                                    <label for="{{accion._id}}">{{accion.alias}}</label>                                  
+                                </div>
+                                <!-- /Acciones -->
+                                
+                            </div>
+                            <br>
+                        </div>
+                        <!-- Entidades -->
+                        <br>
+                    </div>
+                    <!-- /Modulos -->
+                    <hr>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                        <button (click)="guardar()" type="submit" class="btn btn-success waves-effect waves-light m-r-10 btn-block">
+                                            <i class="fa fa-save"> 
+                                                Guardar
+                                            </i>
+                                        </button>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6"> </div>
+                        </div>
+                    </div>
+                  
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="form-group">
+    <label for="options">Options:</label>
+   
+
+
+        <div *ngFor="let row of options" class="col-md-4 text-center">
+            <input  type="checkbox"
+            name="options"
+            value="`row`.`value`"
+            [(ngModel)]="row.checked">
+            <label for="{{row.value}}">{{row.value}}</label>                                  
+        </div>
+    <button   >Get Selected Items</button>
+</div> -->
+
