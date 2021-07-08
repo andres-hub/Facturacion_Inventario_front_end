@@ -31,14 +31,49 @@
                             </span>
                     </a>
                 </li>
-                <li class="sidebar-item">                    
-                    <a (click)="accion('En este módulo podrá gestionar sus sucursales, subir logo de tu empresa, crear perfiles de tus trabajadores, asignar permisos a los mismos.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
-                        <i class="fa fa-cogs"></i>
+              
+                
+               
+                <li *ngFor="let item of sidebarService.menu" class="sidebar-item"> 
+                  
+                    <a *ngIf="item.submenu.length == 1" 
+                    aria-expanded="false"
+                    aria-disabled="true"
+                    class="waves-effect waves-dark"
+                    [routerLink]="item.submenu[0].url" 
+                    routerLinkActive="active" 
+                    [routerLinkActiveOptions]="{exact: true}" 
+                    >
+
+                        <i [class]="item.icono"></i>
                             <span class="hide-menu">
-                                Administración
+                                {{item.titulo}}
                             </span>
                     </a>
+                    
+ 
+                    <a *ngIf="item.submenu.length > 1" class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i [class]="item.icono"></i>
+                            <span class="hide-menu">
+                                {{item.titulo}} 
+                                <span class="label label-rouded label-themecolor pull-right">
+                                    {{item.submenu.length}}
+                                </span>
+                            </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li *ngFor="let subItem of item.submenu">
+                            <a [routerLink]="subItem.url" routerLinkActive="active" 
+                            [routerLinkActiveOptions]="{exact: true}">
+                                {{subItem.titulo}}
+                            </a>
+                        </li>                        
+                    </ul>
+
+
+
                 </li>
+
                 <li class="sidebar-item">                    
                     <a (click)="accion('En este módulo podrás gestionar a tus proveedores para tenerlos en una base de datos centralizada.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
                         <i class="fa fa-address-book"></i>
@@ -94,46 +129,6 @@
                                 Compras
                             </span>
                     </a>
-                </li>
-               
-                <li *ngFor="let item of sidebarService.menu" class="sidebar-item"> 
-                  
-                    <a *ngIf="item.submenu.length == 1" 
-                    aria-expanded="false"
-                    aria-disabled="true"
-                    class="waves-effect waves-dark"
-                    [routerLink]="item.submenu[0].url" 
-                    routerLinkActive="active" 
-                    [routerLinkActiveOptions]="{exact: true}" 
-                    >
-
-                        <i [class]="item.icono"></i>
-                            <span class="hide-menu">
-                                {{item.titulo}}
-                            </span>
-                    </a>
-                    
- 
-                    <a *ngIf="item.submenu.length > 1" class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i [class]="item.icono"></i>
-                            <span class="hide-menu">
-                                {{item.titulo}} 
-                                <span class="label label-rouded label-themecolor pull-right">
-                                    {{item.submenu.length}}
-                                </span>
-                            </span>
-                    </a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li *ngFor="let subItem of item.submenu">
-                            <a [routerLink]="subItem.url" routerLinkActive="active" 
-                            [routerLinkActiveOptions]="{exact: true}">
-                                {{subItem.titulo}}
-                            </a>
-                        </li>                        
-                    </ul>
-
-
-
                 </li>
    
             </ul>
