@@ -32,6 +32,14 @@
                     </a>
                 </li>
                 <li class="sidebar-item">                    
+                    <a (click)="accion('En este módulo podrá gestionar sus sucursales, subir logo de tu empresa, crear perfiles de tus trabajadores, asignar permisos a los mismos.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                        <i class="fa fa-cogs"></i>
+                            <span class="hide-menu">
+                                Administración
+                            </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">                    
                     <a (click)="accion('En este módulo podrás gestionar a tus proveedores para tenerlos en una base de datos centralizada.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
                         <i class="fa fa-address-book"></i>
                             <span class="hide-menu">
@@ -80,7 +88,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">                    
-                    <a (click)="'En este módulo podrás realizar el ingreso de compra de tus productos con los respectivos proveedores.'" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                    <a (click)="accion('En este módulo podrás realizar el ingreso de compra de tus productos con los respectivos proveedores.')" class="waves-effect waves-dark" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
                         <i class="fa fa-shopping-cart"></i>
                             <span class="hide-menu">
                                 Compras
