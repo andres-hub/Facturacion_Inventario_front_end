@@ -43,6 +43,7 @@ import { MovimientoComponent } from './movimientos/movimiento/movimiento.compone
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuarios.component';
+import { EmpresasComponent } from './empresas/empresas.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuar
     MovimientoComponent,
     UsuariosComponent,
     UsuarioComponent,
-    ListarUsuariosComponent
+    ListarUsuariosComponent,
+    EmpresasComponent
   ],
   exports:[
     DashboardComponent,

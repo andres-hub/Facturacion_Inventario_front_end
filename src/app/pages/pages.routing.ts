@@ -36,6 +36,7 @@ import { MovimientoComponent } from './movimientos/movimiento/movimiento.compone
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuarios.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
+import { EmpresasComponent } from './empresas/empresas.component';
 
 const routes: Routes = [    
   {
@@ -123,6 +124,12 @@ const routes: Routes = [
       {path: 'perfil', component: PerfilComponent, canActivate:[AuthGuard], data: {titulo: 'Mi perfil'}},
 
       //negocio
+      {
+        path: 'empresas',
+        component: EmpresasComponent,
+        canActivate: [AuthGuard],
+        data:{titulo: 'Empresas'}
+      },
       {
         path:'ingresos', 
         component: IngresosComponent, 
