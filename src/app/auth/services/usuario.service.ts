@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -13,21 +13,20 @@ import { Usuario } from '../models/usuario.model';
 import { ActualizarUsuarioForm } from '../../pages/interfaces/actualizar-usuario-form.interfase';
 
 const base_url = environment.base_url;
-declare const gapi: any;
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  public auth2: any;
+  
   public usuario: Usuario;
   
 
   constructor(private http: HttpClient,
               private router: Router,
-              private ngZone: NgZone) {
-                this.googleInit();
+              ) {
+               
                }
 
   get token(): string{
@@ -63,24 +62,6 @@ export class UsuarioService {
       );
   }
 
-  googleInit(){
-
-    return new Promise<void>(resolve =>{
-
-      gapi.load('auth2', () => {
-        // Retrieve the singleton for the GoogleAuth library and set up the client.
-        this.auth2 = gapi.auth2.init({
-          client_id: '630080066536-jcsto2vhlbnuhoo3vd5tppunf8gvsg33.apps.googleusercontent.com',
-          cookiepolicy: 'single_host_origin',
-        });
-
-        resolve();
-      });
-
-    })
-
-  } 
-
   guardarStorage(token: string, menu: any){
 
     localStorage.setItem('token', token);
@@ -91,11 +72,6 @@ export class UsuarioService {
   logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('menu');
-    this.auth2.signOut().then(() => {
-      this.ngZone.run(()=>{
-        
-      });
-    });
     this.router.navigateByUrl('/login');
   }
 
