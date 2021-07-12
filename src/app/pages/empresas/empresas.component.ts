@@ -35,7 +35,7 @@ export class EmpresasComponent implements OnInit {
       this.loadingService.ocultarLoading();
 
     },(err)=>{
-      
+
       this.loadingService.ocultarLoading();
       
       Swal.fire({
