@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { CargarEmpresas } from '../interfaces/cargar-empresas-interface';
-import { Empresa } from '../models/empresas.model';
+import { CargarEmpresa } from '../interfaces/cargar-empresa';
+import { Empresa } from '../models/empresa.model';
 
 const base_url = environment.base_url;
 
@@ -28,32 +28,25 @@ export class EmpresasService {
     }
   }
 
-  private convertir(resp: any[]): Empresa[]{
-
-    return resp.map(
-      empresa => new Empresa(
-         empresa._id,
-         empresa.modulo,
-         empresa.nombre,
-         empresa.url,
-         empresa.acciones   
-      )      
-      );
-  }
-
-  cargarEmpresas(){
+  cargarEmpresa(){
 
     const url = `${base_url}/empresas`;
 
-    return this.http.get<CargarEmpresas>(url, this.headers).pipe(
+    return this.http.get<CargarEmpresa>(url, this.headers).pipe(
       map(resp => {
-        const empresas = this.convertir(resp.empresas);
         return{
-          empresas
+          empresa: resp.empresa
         }
 
       })
     )
+  }
+
+  crearEmpresa(empresa: Empresa){
+
+    const url = `${base_url}/empresas`;
+    return this.http.post(url, empresa,this.headers);
+
   }
 
 }
