@@ -30,6 +30,9 @@ import { EmpresasComponent } from './empresas/empresas.component';
 import { SucursalComponent } from './sucursales/sucursal/sucursal.component';
 import { ListarSucursalesComponent } from './sucursales/listar-sucursales/listar-sucursales.component';
 import { SucursalesComponent } from './sucursales/sucursales.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { ListarProveedoresComponent } from './proveedores/listar-proveedores/listar-proveedores.component';
+import { ProveedorComponent } from './proveedores/proveedor/proveedor.component';
 
 const routes: Routes = [    
   {
@@ -131,6 +134,16 @@ const routes: Routes = [
         children:[
           {path:'', component: ListarSucursalesComponent, canActivate:[AuthGuard, RutasGuard], data:{titulo: 'Sucursales'}},
           {path:'sucursal/:id', component: SucursalComponent, canActivate:[AuthGuard,RutasGuard], data:{titulo: 'Sucursal', rutas:[{alias:'Sucursales', url:'sucursales'}]}}
+        ]
+      },
+      {
+        path:'proveedores',
+        component: ProveedoresComponent,
+        canActivate: [AuthGuard],
+        data:{titulo: 'Proveedores'},
+        children:[
+          {path:'', component: ListarProveedoresComponent, canActivate:[AuthGuard, RutasGuard], data:{titulo: 'Proveedores'}},
+          {path:'proveedor/:id', component: ProveedorComponent, canActivate:[AuthGuard,RutasGuard], data:{titulo: 'Proveedores', rutas:[{alias:'Proveedores', url:'proveedores'}]}}
         ]
       }
     ]

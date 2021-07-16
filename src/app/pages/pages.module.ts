@@ -37,6 +37,9 @@ import { EmpresasComponent } from './empresas/empresas.component';
 import { SucursalesComponent } from './sucursales/sucursales.component';
 import { ListarSucursalesComponent } from './sucursales/listar-sucursales/listar-sucursales.component';
 import { SucursalComponent } from './sucursales/sucursal/sucursal.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { ProveedorComponent } from './proveedores/proveedor/proveedor.component';
+import { ListarProveedoresComponent } from './proveedores/listar-proveedores/listar-proveedores.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,10 @@ import { SucursalComponent } from './sucursales/sucursal/sucursal.component';
     EmpresasComponent,
     SucursalesComponent,
     ListarSucursalesComponent,
-    SucursalComponent
+    SucursalComponent,
+    ProveedoresComponent,
+    ProveedorComponent,
+    ListarProveedoresComponent
   ],
   exports:[
     DashboardComponent,
