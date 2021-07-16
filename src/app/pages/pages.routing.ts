@@ -37,6 +37,9 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuarios.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 import { EmpresasComponent } from './empresas/empresas.component';
+import { SucursalComponent } from './sucursales/sucursal/sucursal.component';
+import { ListarSucursalesComponent } from './sucursales/listar-sucursales/listar-sucursales.component';
+import { SucursalesComponent } from './sucursales/sucursales.component';
 
 const routes: Routes = [    
   {
@@ -129,6 +132,16 @@ const routes: Routes = [
         component: EmpresasComponent,
         canActivate: [AuthGuard],
         data:{titulo: 'Empresas'}
+      },
+      {
+        path:'sucursales',
+        component: SucursalesComponent,
+        canActivate: [AuthGuard],
+        data:{titulo: 'Sucursales'},
+        children:[
+          {path:'', component: ListarSucursalesComponent, canActivate:[AuthGuard, RutasGuard], data:{titulo: 'Sucursales'}},
+          {path:'sucursal/:id', component: SucursalComponent, canActivate:[AuthGuard,RutasGuard], data:{titulo: 'Sucursal', rutas:[{alias:'Sucursales', url:'sucursales'}]}}
+        ]
       },
       {
         path:'ingresos', 
