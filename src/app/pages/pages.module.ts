@@ -30,16 +30,6 @@ import { RolesComponent } from './roles/roles.component';
 import { ListarRolesComponent } from './roles/listar-roles/listar-roles.component';
 import { RolComponent } from './roles/rol/rol.component';
 import { PermisosComponent } from './permisos/permisos.component';
-import { IngresosComponent } from './ingresos/ingresos.component';
-import { IngresoComponent } from './ingresos/ingreso/ingreso.component';
-import { ListarIngresosComponent } from './ingresos/listar-ingresos/listar-ingresos.component';
-import { GastosComponent } from './gastos/gastos.component';
-import { ListarGastosComponent } from './gastos/listar-gastos/listar-gastos.component';
-import { GastoComponent } from './gastos/gasto/gasto.component';
-import { PagosComponent } from './pagos/pagos.component';
-import { MovimientosComponent } from './movimientos/movimientos.component';
-import { ListarMovimientosComponent } from './movimientos/listar-movimientos/listar-movimientos.component';
-import { MovimientoComponent } from './movimientos/movimiento/movimiento.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
 import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuarios.component';
@@ -68,16 +58,6 @@ import { SucursalComponent } from './sucursales/sucursal/sucursal.component';
     ListarRolesComponent,
     RolComponent,
     PermisosComponent,
-    IngresosComponent,
-    IngresoComponent,
-    ListarIngresosComponent,
-    GastosComponent,
-    ListarGastosComponent,
-    GastoComponent,
-    PagosComponent,
-    MovimientosComponent,
-    ListarMovimientosComponent,
-    MovimientoComponent,
     UsuariosComponent,
     UsuarioComponent,
     ListarUsuariosComponent,

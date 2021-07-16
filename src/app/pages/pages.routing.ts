@@ -23,16 +23,6 @@ import { RolesComponent } from './roles/roles.component';
 import { ListarRolesComponent } from './roles/listar-roles/listar-roles.component';
 import { RolComponent } from './roles/rol/rol.component';
 import { PermisosComponent } from './permisos/permisos.component';
-import { IngresosComponent } from './ingresos/ingresos.component';
-import { ListarIngresosComponent } from './ingresos/listar-ingresos/listar-ingresos.component';
-import { IngresoComponent } from './ingresos/ingreso/ingreso.component';
-import { GastosComponent } from './gastos/gastos.component';
-import { ListarGastosComponent } from './gastos/listar-gastos/listar-gastos.component';
-import { GastoComponent } from './gastos/gasto/gasto.component';
-import { PagosComponent } from './pagos/pagos.component';
-import { MovimientosComponent } from './movimientos/movimientos.component';
-import { ListarMovimientosComponent } from './movimientos/listar-movimientos/listar-movimientos.component';
-import { MovimientoComponent } from './movimientos/movimiento/movimiento.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ListarUsuariosComponent } from './usuarios/listar-usuarios/listar-usuarios.component';
 import { UsuarioComponent } from './usuarios/usuario/usuario.component';
@@ -131,7 +121,7 @@ const routes: Routes = [
         path: 'empresas',
         component: EmpresasComponent,
         canActivate: [AuthGuard],
-        data:{titulo: 'Empresas'}
+        data:{titulo: 'Empresa'}
       },
       {
         path:'sucursales',
@@ -142,43 +132,7 @@ const routes: Routes = [
           {path:'', component: ListarSucursalesComponent, canActivate:[AuthGuard, RutasGuard], data:{titulo: 'Sucursales'}},
           {path:'sucursal/:id', component: SucursalComponent, canActivate:[AuthGuard,RutasGuard], data:{titulo: 'Sucursal', rutas:[{alias:'Sucursales', url:'sucursales'}]}}
         ]
-      },
-      {
-        path:'ingresos', 
-        component: IngresosComponent, 
-        canActivate:[AuthGuard], 
-        data: {titulo: 'Ingresos'},
-        children:[
-          {path: '', component: ListarIngresosComponent, canActivate:[AuthGuard, RutasGuard], data:{titulo: 'Ingresos'}},
-          {path: 'ingreso/:id', component: IngresoComponent, canActivate:[AuthGuard, RutasGuard], data: { titulo: 'Ingreso', rutas:[{alias: 'Ingresos', url:'ingresos'}] }}
-        ]
-      },
-      {
-        path:'gastos', 
-        component: GastosComponent, 
-        canActivate:[AuthGuard], 
-        data: {titulo: 'Gastos'},
-        children:[
-          {path: '', component: ListarGastosComponent, canActivate:[AuthGuard, RutasGuard], data:{titulo: 'Gastos'}},
-          {path: 'gasto/:id', component: GastoComponent, canActivate:[AuthGuard, RutasGuard], data: { titulo: 'Gasto', rutas:[{alias: 'Gastos', url:'gastos'}] }}
-        ]
-      },
-      {
-        path:'pagos/:id', 
-        component: PagosComponent, 
-        canActivate:[AuthGuard], 
-        data: {titulo: 'Pagos'},        
-      },
-      {
-        path:'movimientos', 
-        component: MovimientosComponent, 
-        canActivate:[AuthGuard], 
-        data: {titulo: 'Quincenas'},
-        children:[
-          {path: '', component: ListarMovimientosComponent, canActivate:[AuthGuard, RutasGuard], data:{titulo: 'Quincenas'}},
-          {path: 'movimiento/:mes/:quincena', component: MovimientoComponent, canActivate:[AuthGuard, RutasGuard], data: { titulo: 'Movimientos', rutas:[{alias: 'Quincenas', url:'movimientos'}] }}
-        ]
-      },
+      }
     ]
   },
 ];
