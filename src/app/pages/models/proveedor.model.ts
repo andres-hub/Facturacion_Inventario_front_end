@@ -1,4 +1,4 @@
-import { Persona } from "./personas.model";
+import { Persona } from "./persona.model";
 
 export class Proveedor {
 
@@ -8,9 +8,10 @@ export class Proveedor {
         public NIT: string,
         public Direccion: string,
         public Telefono: string,
-        public correo: string,
+        public Correo: string,
         public PersonaContacto: Persona[],
-        public Estado: boolean
+        public Estado: boolean,
+        public Empresa: string
     ){}
 
 }

@@ -7,7 +7,8 @@ export class Persona{
         public PrimerApellido: string,
         public SgundoApellido: string,
         public Telefonos: string[],
-        public Correos: string[]
+        public Correos: string[],
+        public Estado: boolean,
     ){}
 
 }
