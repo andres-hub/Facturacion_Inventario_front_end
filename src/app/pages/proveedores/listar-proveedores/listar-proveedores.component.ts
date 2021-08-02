@@ -35,7 +35,6 @@ export class ListarProveedoresComponent implements OnInit {
 
     this.proveedoresService.cargarProveedores(this.desde)
     .subscribe(({total, proveedores})=>{
-
       this.totalRegistros = total;
       this.proveedores = proveedores;
       this.mostrandoDesde = 1;

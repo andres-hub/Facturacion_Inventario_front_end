@@ -1,0 +1,94 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Producto</h4>
+        <h6 class="card-subtitle">Ajustes</h6>
+        
+        <form ngNativeValidate [formGroup]="productoFrom" (submit)="guardarProducto()">
+
+            <div class="form-group">
+                <label class="control-label">Nombre *</label>
+                <input type="text" formControlName="Nombre" class="form-control" required placeholder="Nombre">
+                <small class="form-control-feedback">Este campo es obligatorio</small> 
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Código *</label>
+                <input type="text" formControlName="Codigo" class="form-control" required placeholder="Código">
+                <small class="form-control-feedback">Este campo es obligatorio</small> 
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Unidad de Medida *</label>
+                <input formControlName="UnidadMedida" type="text" class="form-control" required>
+                <small class="form-control-feedback">Este campo es obligatorio</small>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Valor Interno *</label>
+                <input type="text" currencyMask formControlName="ValorInterno" class="form-control" required>
+                <small class="form-control-feedback">Este campo es obligatorio</small>
+            </div>  
+
+            <div class="form-group">
+                <label class="control-label">Valor Publico *</label>
+                <input type="text" currencyMask formControlName="ValorPublico" class="form-control" required>
+                <small class="form-control-feedback">Este campo es obligatorio</small>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Valor para Mayorista</label>
+                <input currencyMask formControlName="ValorMayorista" class="form-control">
+                <small class="form-control-feedback"></small>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Stock Mínimo</label>
+                <input type="number" formControlName="StockMinimo" class="form-control">
+                <small class="form-control-feedback"></small>
+            </div>
+
+            <table id="demo-foo-pagination" class="table m-b-0 toggle-arrow-tiny" data-page-size="5">
+                <thead>
+                    <tr>
+                        <th>Proveedor</th>
+                        <th class="text-nowrap w100">Aciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let proveedor of proveedoresProducto; let i = index;">
+                        <td>
+                            {{proveedor.Nombre}}
+                        </td>
+                       
+                        <td class="text-nowrap text-center">
+                            <button type="button" class="btn btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Eliminar"
+                            (click)="eliminarProveedor(proveedor)">
+                                <i class="fa fa-trash-o text-danger" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>            
+                </tbody>        
+            </table>
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <select class="form-control" formControlName="Proveedor">
+                        <option value="">Seleccione un Proveedor</option>
+                        <option *ngFor="let item of proveedores" [value]="item._id">
+                            {{item.Nombre}}
+                        </option>
+                    </select>
+                    <span class="input-group-btn">
+                        <button (click)="agregarProveedor()" class="btn btn-info" type="button">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <br>
+            <button  type="submit"  class="btn btn-success waves-effect waves-light m-r-10 btn-block">
+                <i class="fa fa-save"> Guardar</i>
+            </button>
+
+        </form>
+    </div>
+</div>

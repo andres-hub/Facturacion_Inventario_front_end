@@ -40,6 +40,9 @@ import { SucursalComponent } from './sucursales/sucursal/sucursal.component';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { ProveedorComponent } from './proveedores/proveedor/proveedor.component';
 import { ListarProveedoresComponent } from './proveedores/listar-proveedores/listar-proveedores.component';
+import { ProductosComponent } from './productos/productos.component';
+import { ListarProductosComponent } from './productos/listar-productos/listar-productos.component';
+import { ProductoComponent } from './productos/producto/producto.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,10 @@ import { ListarProveedoresComponent } from './proveedores/listar-proveedores/lis
     SucursalComponent,
     ProveedoresComponent,
     ProveedorComponent,
-    ListarProveedoresComponent
+    ListarProveedoresComponent,
+    ProductosComponent,
+    ListarProductosComponent,
+    ProductoComponent
   ],
   exports:[
     DashboardComponent,

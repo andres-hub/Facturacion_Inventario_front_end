@@ -33,6 +33,9 @@ import { SucursalesComponent } from './sucursales/sucursales.component';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { ListarProveedoresComponent } from './proveedores/listar-proveedores/listar-proveedores.component';
 import { ProveedorComponent } from './proveedores/proveedor/proveedor.component';
+import { ProductosComponent } from './productos/productos.component';
+import { ListarProductosComponent } from './productos/listar-productos/listar-productos.component';
+import { ProductoComponent } from './productos/producto/producto.component';
 
 const routes: Routes = [    
   {
@@ -145,7 +148,18 @@ const routes: Routes = [
           {path:'', component: ListarProveedoresComponent, canActivate:[AuthGuard, RutasGuard], data:{titulo: 'Proveedores'}},
           {path:'proveedor/:id', component: ProveedorComponent, canActivate:[AuthGuard,RutasGuard], data:{titulo: 'Proveedores', rutas:[{alias:'Proveedores', url:'proveedores'}]}}
         ]
-      }
+      },
+      {
+        path:'productos',
+        component: ProductosComponent,
+        canActivate: [AuthGuard],
+        data:{titulo: 'Productos'},
+        children:[
+          {path:'', component: ListarProductosComponent, canActivate:[AuthGuard, RutasGuard], data:{titulo: 'Productos'}},
+          {path:'producto/:id', component: ProductoComponent, canActivate:[AuthGuard,RutasGuard], data:{titulo: 'Productos', rutas:[{alias:'Productos', url:'productos'}]}}
+        ]
+      },
+
     ]
   },
 ];

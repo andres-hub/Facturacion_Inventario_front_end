@@ -2,13 +2,13 @@
                 
     <div class="col-sm-12 col-md-5">
 
-        <h4 class="card-title">Total de proveedores ({{ totalRegistros }})</h4>
-        <h6 class="card-subtitle">Proveedores registrados</h6>
+        <h4 class="card-title">Total de productos ({{ totalRegistros }})</h4>
+        <h6 class="card-subtitle">Productos registrados</h6>
 
     </div>
 
     <div class="col-sm-12 col-md-7">
-        <input type="text" class="form-control" placeholder="Buscar Proveedor.." #txtTermino>
+        <input type="text" class="form-control" placeholder="Buscar producto.." #txtTermino>
     </div>
   
 </div>
@@ -22,43 +22,56 @@
                         Nombre
                     </th>
                     <th>
-                        NIT
+                        Código
                     </th>
                     <th>
-                        Dirección
+                        Unidad de Medida
                     </th>
                     <th>
-                        Teléfono
+                        Valor Interno
                     </th>
                     <th>
-                        Correo
+                        Valor al Publico
+                    </th>
+                    <th>
+                        Valor Mayorista
+                    </th>
+                    <th>
+                        Estado
                     </th>
                     <th class="text-nowrap w100">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let proveedor of proveedores">           
+                <tr *ngFor="let producto of productos">           
                     <td>
-                        {{proveedor.Nombre}}
+                        {{producto.Nombre}}
                     </td>   
                     <td>
-                        {{proveedor.NIT}}
+                        {{producto.Codigo}}
                     </td>
                     <td>
-                        {{proveedor.Direccion}}
+                        {{producto.UnidadMedida}}
                     </td>
                     <td>
-                        {{proveedor.Telefono}}
+                        {{producto.ValorInterno}}
                     </td>
                     <td>
-                        {{proveedor.Correo}}
+                        {{producto.ValorPublico}}
+                    </td>
+                    <td>
+                        {{producto.ValorMayorista}}
+                    </td>
+                    <td>
+                        <div *ngIf="producto.Estado" class="label label-table label-success">Activo</div>
+                        <div *ngIf="!producto.Estado" class="label label-table label-danger">Inactivo</div>
                     </td>
                     <td class="text-nowrap text-center"> 
-                        <a [routerLink]="['proveedor', proveedor._id ]" data-toggle="tooltip" data-original-title="Editar"> 
+                        <a [routerLink]="['producto', producto._id ]" data-toggle="tooltip" data-original-title="Editar"> 
                             <i class="fa fa-edit text-inverse m-r-10"></i>
                         </a>
-                        <a (click)="cargarContactos()" data-original-title="Cambiar estado" data-toggle="tooltip" data-original-title="Personas de contactos" class="cursor"> 
-                            <i class="fa fa-group text-info"></i> 
+                        <a (click)="cambiarEstadoProducto(producto)" data-original-title="Cambiar estado" data-toggle="tooltip" data-original-title="Cambiar estado" class="cursor"> 
+                            <i class="fa fa-power-off text-danger"></i> 
                         </a>
                     </td>                           
                 </tr>
@@ -78,7 +91,7 @@
 
         <div class="col-sm-6 col-md-6">
 
-            <a routerLink="proveedor/Nuevo" class="pull-right btn btn-circle btn-success">
+            <a routerLink="producto/Nuevo" class="pull-right btn btn-circle btn-success">
                 <i class="ti-plus"></i>
             </a>
 
